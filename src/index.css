@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0D1B2A;
+  --navy-800: #1B2A4A;
+  --accent: #4A7FDB;
+  --accent-glow: rgba(74,127,219,0.35);
+  --violet: #7C3AED;
+  --violet-glow: rgba(124,58,237,0.3);
+  --emerald: #059669;
+  --amber: #D97706;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    @apply bg-gray-50 text-gray-900 antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: rgba(74,127,219,0.25); }
+}
+
+/* ── LOADING SCREEN ── */
+.synapse-loader {
+  position: fixed;
+  inset: 0;
+  background: #0D1B2A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.synapse-loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.loader-brain {
+  font-size: 3.5rem;
+  animation: brainPulse 1.8s ease-in-out infinite;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 20px rgba(74,127,219,0.6));
+}
+@keyframes brainPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 16px rgba(74,127,219,0.5)); }
+  50% { transform: scale(1.12); filter: drop-shadow(0 0 32px rgba(124,58,237,0.7)); }
+}
+.loader-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+.loader-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 2.5rem;
+  font-family: 'Space Mono', monospace;
+}
+.loader-bar-track {
+  width: 220px;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.loader-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4A7FDB, #7C3AED);
+  border-radius: 99px;
+  animation: loaderFill 1.8s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+@keyframes loaderFill {
+  0% { width: 0%; }
+  60% { width: 75%; }
+  100% { width: 100%; }
+}
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0px) scale(1); filter: drop-shadow(0 0 24px rgba(74,127,219,0.55)) drop-shadow(0 0 48px rgba(124,58,237,0.3)); }
+  50% { transform: translateY(-8px) scale(1.03); filter: drop-shadow(0 0 36px rgba(74,127,219,0.75)) drop-shadow(0 0 64px rgba(124,58,237,0.45)); }
+}
+.loader-dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 2rem;
+}
+.loader-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  animation: dotBounce 1.4s ease-in-out infinite;
+}
+.loader-dot:nth-child(2) { animation-delay: 0.15s; }
+.loader-dot:nth-child(3) { animation-delay: 0.3s; }
+@keyframes dotBounce {
+  0%, 80%, 100% { transform: translateY(0); background: rgba(255,255,255,0.3); }
+  40% { transform: translateY(-8px); background: #4A7FDB; }
+}
+
+/* ── PAGE ENTRY ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 12px var(--accent-glow); }
+  50% { box-shadow: 0 0 28px var(--accent-glow), 0 0 48px var(--violet-glow); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes ping-slow {
+  0% { transform: scale(1); opacity: 0.8; }
+  75%, 100% { transform: scale(1.8); opacity: 0; }
+}
+
+.animate-fade-up { animation: fadeUp 0.45s cubic-bezier(0.4,0,0.2,1) both; }
+.animate-fade-in { animation: fadeIn 0.4s ease both; }
+.animate-slide-right { animation: slideInRight 0.4s cubic-bezier(0.4,0,0.2,1) both; }
+.animate-slide-left { animation: slideInLeft 0.4s cubic-bezier(0.4,0,0.2,1) both; }
+.animate-scale-in { animation: scaleIn 0.35s cubic-bezier(0.4,0,0.2,1) both; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-glow { animation: glow 2.5s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 8s linear infinite; }
+.animate-ping-slow { animation: ping-slow 2s ease-out infinite; }
+
+/* Staggered delays */
+.delay-75  { animation-delay: 75ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+
+/* ── SKELETON SHIMMER ── */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* ── NAVBAR GLASSMORPHISM ── */
+.navbar-glass {
+  background: rgba(13,27,42,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+/* ── CARD HOVER LIFT ── */
+.card-lift {
+  transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+}
+
+/* ── GRAPH NODE PULSE ── */
+.node-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  animation: ping-slow 2s ease-out infinite;
+}
+
+/* ── BUTTON SHINE EFFECT ── */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transition: left 0.5s ease;
+}
+.btn-shine:hover::before { left: 150%; }
+
+/* ── GRADIENT TEXT ── */
+.gradient-text {
+  background: linear-gradient(135deg, #4A7FDB, #7C3AED);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-warm {
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.22); }
+
+/* ── PANEL SLIDE ── */
+@keyframes panelSlideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.panel-slide-in {
+  animation: panelSlideIn 0.3s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+/* ── REACT FLOW overrides ── */
+.react-flow__node { transition: filter 0.2s; }
+.react-flow__node:hover { filter: brightness(1.04); }
+.react-flow__edge-path { transition: stroke-width 0.2s; }
+
+/* ── TOOLTIP ── */
+.tooltip {
+  position: relative;
+}
+.tooltip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0D1B2A;
+  color: white;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 100;
+}
+.tooltip:hover::after { opacity: 1; }
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-white px-4 py-2 rounded-lg font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-white border border-gray-200 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-all;
+  }
+  .input {
+    @apply w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-all;
+  }
+  .card {
+    @apply bg-white rounded-2xl border border-gray-200 shadow-sm;
+  }
+}

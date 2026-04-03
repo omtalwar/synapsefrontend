@@ -1,0 +1,54 @@
+# ─── Node modules ───
+node_modules/
+
+# ─── Logs ───
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ─── Build output ───
+dist/
+build/
+.vite/
+
+# ─── Environment variables ───
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ─── OS files ───
+.DS_Store
+Thumbs.db
+
+# ─── IDE / Editor ───
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ─── Cache ───
+.cache/
+.parcel-cache/
+.eslintcache
+
+# ─── Firebase / secrets ───
+.firebase/
+.firebaserc (optional: keep if needed)
+
+# ─── Netlify ───
+.netlify/
+
+# ─── Coverage ───
+coverage/
+
+# ─── Temporary files ───
+tmp/
+temp/
+
+# ─── Misc ───
+*.local

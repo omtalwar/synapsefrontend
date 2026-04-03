@@ -1,0 +1,79 @@
+/* ── LoadingScreen ── */
+
+.loading-dot-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: radial-gradient(circle, rgba(74, 127, 219, 0.8) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.loading-orb-1 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74, 127, 219, 0.12) 0%, transparent 65%);
+  top: 10%;
+  left: 10%;
+  animation: float 5s ease-in-out infinite;
+}
+
+.loading-orb-2 {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 65%);
+  bottom: 15%;
+  right: 12%;
+  animation: float 6s ease-in-out infinite reverse;
+}
+
+.loading-content {
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading-logo-wrap {
+  margin-bottom: 28px;
+  animation: logoFloat 2.5s ease-in-out infinite;
+}
+
+.loading-logo {
+  height: 72px;
+  filter: drop-shadow(0 0 24px rgba(74, 127, 219, 0.55)) drop-shadow(0 0 48px rgba(124, 58, 237, 0.3));
+}
+
+.loading-wordmark {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  color: white;
+  margin-bottom: 6px;
+  animation: letterReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.loading-letter {
+  display: inline-block;
+  background: linear-gradient(135deg, #fff 0%, rgba(147, 197, 253, 0.85) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.loading-tagline {
+  font-size: 0.72rem;
+  font-family: 'Space Mono', monospace;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 0.22em;
+  margin-bottom: 36px;
+  animation: fadeIn 0.6s ease 0.5s both;
+}
+
+.loading-dots-spacing {
+  margin-top: 20px;
+}

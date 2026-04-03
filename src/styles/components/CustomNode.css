@@ -1,0 +1,88 @@
+/* ── CustomNode ── */
+
+.custom-node {
+  background: white;
+  border-radius: 14px;
+  min-width: 155px;
+  max-width: 195px;
+  padding: 10px 12px;
+  transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+  cursor: pointer;
+  position: relative;
+}
+
+.custom-node--selected {
+  transform: scale(1.04);
+}
+
+.custom-node--default {
+  transform: scale(1);
+}
+
+.custom-node-accent-bar {
+  position: absolute;
+  top: 0;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  border-radius: 0 0 4px 4px;
+  transition: opacity 0.2s;
+}
+
+.custom-node-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.custom-node-priority-dot {
+  margin-top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.custom-node-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.custom-node-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.custom-node-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 99px;
+  text-transform: capitalize;
+}
+
+.custom-node-connection-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  color: white;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 8px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}

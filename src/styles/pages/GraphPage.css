@@ -1,0 +1,60 @@
+/* ── GraphPage ── */
+
+.graph-root {
+  background: #f8fafc;
+}
+
+.graph-label-badge {
+  background: linear-gradient(135deg, #4a7fdb, #7c3aed);
+  border-radius: 8px;
+  padding: 4px 8px;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Panel connect button */
+.graph-connect-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: white;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 12px;
+  transition: all 0.2s;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+  background: linear-gradient(135deg, #059669, #0d9488);
+  border: none;
+  cursor: pointer;
+}
+
+.graph-connect-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Panel footer open button */
+.graph-open-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 12px;
+  transition: all 0.2s;
+  background: linear-gradient(135deg, #0d1b2a, #1b2a4a);
+  border: none;
+  cursor: pointer;
+}
+
+.graph-open-btn:hover {
+  opacity: 0.9;
+}
